@@ -1,0 +1,90 @@
+# HelpColor.cna
+#
+# Prints available beacon commands and colors each command based on its type
+#
+# Author: @jmoosdijk / Outflank
+#
+# 2021-05-21 : v1.0: public release
+#
+
+# register command
+beacon_command_register("helpx", "Lists available commands and colors each command based on its type",
+	"lists available commands and colors each command based on its type.\n\n" .
+	"Usage: helpx\n");
+
+# command definition
+alias helpx {
+    # highlight the following commands
+    # CS built-in commands based on: https://www.cobaltstrike.com/help-opsec
+
+    @ApiOnly_builtin = @("cd", "cp", "connect", "download", "drives", "exit", "getprivs", "getuid", "inline-execute", "jobkill", "kill", "link", "ls", "make_token", "mkdir", "mv", "ps", "pwd", "rev2self", "rm", "rportfwd", "rportfwd_local", "setenv", "socks", "steal_token", "unlink", "upload");
+    @ApiOnly_custom = @("ps-find");
+    @Housekeeping_builtin = @("argue", "blockdlls", "cancel", "checkin", "clear", "downloads", "help", "jobs", "mode dns", "mode dns-txt", "mode dns6", "note", "powershell-import", "ppid", "sleep", "socks stop", "spawnto");
+    @Housekeeping_custom = @("helpx");
+    @ForkRun_builtin = @("chromedump", "covertvpn", "dcsync", "execute-assembly", "hashdump", "logonpasswords", "mimikatz", "net", "portscan", "powerpick", "pth", "ssh", "ssh-key");
+    @ForkRun_custom = @("shovel");
+    @ForkRunOrTargetExplictProcess_builtin = @(, "browserpivot", "psinject", "desktop", "keylogger", "printscreen", "screenshot", "screenwatch");
+    @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
+    @Bof_CS-Situational-Awareness-BOF = @("arp", "adv_audit_policies", "cacls", "dir", "domainenum", "driversigs", "enum_filter_driver", "enumLocalSessions", "env", "ipconfig", "ldapsearch", "listdns", "listmods", "netshares", "netsharesAdmin", "netstat", "netuse", "netuser", "netview", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "nslookup", "reg_query", "reg_query_recursive", "routeprint", "schtasksenum", "schtasksquery", "sc_enum", "sc_qc", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "sc_qdescription", "tasklist", "userenum", "whoami", "windowlist", "wmi_query", "netsession", "resources", "uptime");
+    @Bof_bofnet = @("bofnet_init",  "bofnet_shutdown",  "bofnet_list",  "bofnet_listassemblies",  "bofnet_execute",  "bofnet_load",  "bofnet_loadbig",  "bofnet_job",  "bofnet_jobs",  "bofnet_jobstatus",  "bofnet_jobkill",  "bofnet_boo");
+    @Bof_custom = @("shovelng", "lapsdump", "smbinfo", "exitthread");
+    @ProcessExecution_builtin = @("execute", "run", "runas", "runu", "runasadmin");
+    @ProcessSpawnAndInject_builtin = @("elevate", "shspawn", "spawn", "spawnas", "spawnu", "spunnel", "spunnel_local" );  
+    @ProcessRemoteInject_builtin = @("dllinject", "dllload", "inject", "shinject");
+    @ProcessRemoteInject_custom = @("dumpert");
+    @ProcessOrServiceCreation_builtin = @("shell", "pth", "jump", "powershell", "remote-exec");
+    @DllSpawn_custom = @("HiddenDesktop", "psc", "psh", "psk", "psm", "psw", "psw", "psx", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD");
+
+    # start printing to current beacon
+    blog($1, "Available beacon commands with command type highlighting\n");
+    blog($1, "\c3 GREEN: \tApiOnly, Housekeeping");
+    blog($1, "\c9 L-GREEN: \tBOF");
+    blog($1, "\c8 YELLOW: \tFork&Run, Fork&RunOrTargetExplictProcess, DllSpawn");
+    blog($1, "\c4 RED: \tProcessExecution, ProcessSpawnAndInject, ProcessRemoteInject, ProcessOrServiceCreation\n");
+    blog($1, "Command \t\t  Description");  
+    blog($1, "-------- \t\t  ------------");
+
+    # command sorting subroutine 
+    sub caseInsensitiveCompare
+    {
+        $a = lc($1);
+        $b = lc($2);
+        
+        return $a cmp $b;
+    }
+    
+    @commandArray = beacon_commands();
+    @sortedCommandArray = sort(&caseInsensitiveCompare, @commandArray);
+
+        # time to color commands based on their type
+        foreach $command (@sortedCommandArray) {
+            if(iff($command in @ApiOnly_builtin || $command in @ApiOnly_custom || $command in @Housekeeping_builtin || $command in @Housekeeping_custom,true,false))
+            {
+                blog($1, "\c3$[25]command" . beacon_command_describe($command) . "\o");     # set command color to GREEN
+            }
+            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_CS-Situational-Awareness-BOF || $command in @Bof_bofnet,true,false))
+            {
+                blog($1, "\c9$[25]command" . beacon_command_describe($command) . "\o");     # set command color to LIGHT GREEN
+            }
+            else if(iff($command in @ForkRun_builtin || $command in @ForkRun_custom || $command in @ForkRunOrTargetExplictProcess_builtin,true,false))
+            {
+                blog($1, "\c8$[25]command" . beacon_command_describe($command) . "\o");     # set command color to YELLOW
+            }
+            else if($command in @DllSpawn_custom)
+            {
+                blog($1, "\c8$[25]command" . beacon_command_describe($command) . "\o");     # set command color to YELLOW
+            }
+            else if(iff($command in @ProcessExecution_builtin || $command in @ProcessOrServiceCreation_builtin,true,false))
+            {
+                blog($1, "\c4$[25]command" . beacon_command_describe($command) . "\o");     # set command color to RED
+            }
+            else if(iff($command in @ProcessRemoteInject_builtin || $command in @ProcessRemoteInject_custom || $command in @ProcessSpawnAndInject_builtin,true,false))
+            {
+                blog($1, "\c4$[25]command" . beacon_command_describe($command) . "\o");     # set command color to RED
+            }
+            else 
+            {
+                blog($1, "$[25]command" . beacon_command_describe($command));               # set command color to DEFAULT COLOR/NOT DEFINED
+			}
+		}	
+}
