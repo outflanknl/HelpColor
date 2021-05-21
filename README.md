@@ -1,5 +1,5 @@
 # HelpColor #
-Agressor script that lists available Cobalt Strike beacon commands and colors them based on their type
+Aggressor script that lists available Cobalt Strike beacon commands and colors them based on their type
 
 * Colouring for built-in CS commands, based on: https://www.cobaltstrike.com/help-opsec
 * Colouring of various custom BOFs/addons
