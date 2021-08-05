@@ -22,7 +22,7 @@ alias helpx {
     @Housekeeping_builtin = @("argue", "blockdlls", "cancel", "checkin", "clear", "downloads", "help", "jobs", "mode dns", "mode dns-txt", "mode dns6", "note", "powershell-import", "ppid", "sleep", "socks stop", "spawnto");
     @Housekeeping_custom = @("helpx");
     @ForkRun_builtin = @("chromedump", "covertvpn", "dcsync", "execute-assembly", "hashdump", "logonpasswords", "mimikatz", "net", "portscan", "powerpick", "pth", "ssh", "ssh-key");
-    @ForkRun_custom = @("shovel");
+    @ForkRun_custom = @("shovel", "sharpgen");
     @ForkRunOrTargetExplictProcess_builtin = @(, "browserpivot", "psinject", "desktop", "keylogger", "printscreen", "screenshot", "screenwatch");
     @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
     @Bof_CS-Situational-Awareness-BOF = @("arp", "adv_audit_policies", "cacls", "dir", "domainenum", "driversigs", "enum_filter_driver", "enumLocalSessions", "env", "ipconfig", "ldapsearch", "listdns", "listmods", "netshares", "netsharesAdmin", "netstat", "netuse", "netuser", "netview", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "nslookup", "reg_query", "reg_query_recursive", "routeprint", "schtasksenum", "schtasksquery", "sc_enum", "sc_qc", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "sc_qdescription", "tasklist", "userenum", "whoami", "windowlist", "wmi_query", "netsession", "resources", "uptime");
