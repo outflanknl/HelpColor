@@ -4,8 +4,9 @@
 #
 # Author: @jmoosdijk / Outflank
 #
-# 2021-05-21 : v1.0: public release
+# 2021-08-19 : v1.0: public release
 #
+# Added BOF from https://github.com/anthemtotheego/InlineExecute-Assembly
 
 # register command
 beacon_command_register("helpx", "Lists available commands and colors each command based on its type",
@@ -25,9 +26,9 @@ alias helpx {
     @ForkRun_custom = @("shovel", "sharpgen");
     @ForkRunOrTargetExplictProcess_builtin = @(, "browserpivot", "psinject", "desktop", "keylogger", "printscreen", "screenshot", "screenwatch");
     @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
-    @Bof_CS-Situational-Awareness-BOF = @("arp", "adv_audit_policies", "cacls", "dir", "domainenum", "driversigs", "enum_filter_driver", "enumLocalSessions", "env", "ipconfig", "ldapsearch", "listdns", "listmods", "netshares", "netsharesAdmin", "netstat", "netuse", "netuser", "netview", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "nslookup", "reg_query", "reg_query_recursive", "routeprint", "schtasksenum", "schtasksquery", "sc_enum", "sc_qc", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "sc_qdescription", "tasklist", "userenum", "whoami", "windowlist", "wmi_query", "netsession", "resources", "uptime");
+    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "driversigs", "enumLocalSessions", "enum_filter_driver", "env", "findLoadedModule", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netstat", "netuser", "netview", "nslookup", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "schtasksenum", "schtasksquery", "tasklist", "uptime", "whoami", "windowlist", "wmi_query");
     @Bof_bofnet = @("bofnet_init",  "bofnet_shutdown",  "bofnet_list",  "bofnet_listassemblies",  "bofnet_execute",  "bofnet_load",  "bofnet_loadbig",  "bofnet_job",  "bofnet_jobs",  "bofnet_jobstatus",  "bofnet_jobkill",  "bofnet_boo");
-    @Bof_custom = @("shovelng", "lapsdump", "smbinfo", "exitthread");
+    @Bof_custom = @("shovelng", "lapsdump", "smbinfo", "exitthread", "inlineExecute-Assembly");
     @ProcessExecution_builtin = @("execute", "run", "runas", "runu", "runasadmin");
     @ProcessSpawnAndInject_builtin = @("elevate", "shspawn", "spawn", "spawnas", "spawnu", "spunnel", "spunnel_local" );  
     @ProcessRemoteInject_builtin = @("dllinject", "dllload", "inject", "shinject");
