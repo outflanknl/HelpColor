@@ -28,15 +28,15 @@ alias helpx {
     @ForkRun_custom = @("shovel", "sharpgen");
     @ForkRunOrTargetExplictProcess_builtin = @(, "browserpivot", "psinject", "desktop", "keylogger", "printscreen", "screenshot", "screenwatch");
     @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
-    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "driversigs", "domainenum", "enumLocalSessions", "enum_filter_driver", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netstat", "netuser", "netview", "nslookup", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "whoami", "windowlist", "wmi_query");
+    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "driversigs", "domainenum", "enumLocalSessions", "enum_filter_driver", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netshares", "netsharesAdmin", "netstat", "netuse_add", "netuse_delete", "netuse_list", "netuser", "netview", "nslookup", "probe", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "vssenum", "whoami", "windowlist", "wmi_query");
     @Bof_bofnet = @("bofnet_init",  "bofnet_shutdown",  "bofnet_list",  "bofnet_listassemblies",  "bofnet_execute", "bofnet_executeassembly", "bofnet_load",  "bofnet_loadbig",  "bofnet_job",  "bofnet_jobs",  "bofnet_jobstatus",  "bofnet_jobkill",  "bofnet_boo");
-    @Bof_custom = @("shovelng", "lapsdump", "smbinfo", "exitthread", "inlineExecute-Assembly", "hollow", "sec-inject", "sec-shinject", "kerberoast", "nanodump");
+    @Bof_custom = @("Askcreds", "Domaininfo", "dumpertng", "GetMachineAccountQuota", "AddMachineAccount", "DelMachineAccount", "shovelng", "Kerberoast", "Lapsdump", "Psw", "Smbinfo", "SprayAD", "StartWebClient", "Winver", "exitthread", "inlineExecute-Assembly", "hollow", "sec-inject", "sec-shinject", "kerberoast", "nanodump", "unhook" );
     @ProcessExecution_builtin = @("execute", "run", "runas", "runu", "runasadmin");
     @ProcessSpawnAndInject_builtin = @("elevate", "shspawn", "spawn", "spawnas", "spawnu", "spunnel", "spunnel_local" );  
     @ProcessRemoteInject_builtin = @("dllinject", "dllload", "inject", "shinject");
     @ProcessRemoteInject_custom = @("dumpert");
     @ProcessOrServiceCreation_builtin = @("shell", "pth", "jump", "powershell", "remote-exec");
-    @DllSpawn_custom = @("HiddenDesktop", "psc", "psh", "psk", "psm", "psw", "psw", "psx", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD");
+    @DllSpawn_custom = @("HiddenDesktop", "psc", "psh", "psk", "psm", "psw", "psw", "psx", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD", "PetitPotam");
 
     # start printing to current beacon
     blog($1, "Available beacon commands with command type highlighting\n");
