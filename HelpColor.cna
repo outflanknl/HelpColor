@@ -20,16 +20,17 @@ alias helpx {
     # highlight the following commands
     # CS built-in commands based on: https://www.cobaltstrike.com/help-opsec
 
-    @ApiOnly_builtin = @("cd", "cp", "connect", "download", "drives", "exit", "getprivs", "getuid", "history", "inline-execute", "jobkill", "kill", "link", "ls", "make_token", "mkdir", "mv", "ps", "pwd", "rev2self", "rm", "rportfwd", "rportfwd_local", "setenv", "socks", "steal_token", "unlink", "upload");
+    @ApiOnly_builtin = @("!", "cd", "cp", "connect", "clipboard", "download", "drives", "exit", "getprivs", "getuid", "history", "inline-execute", "jobkill", "kill", "link", "ls", "make_token", "mkdir", "mv", "ps", "pwd", "rev2self", "rm", "rportfwd", "rportfwd_local", "setenv", "socks", "steal_token", "unlink", "upload");
     @ApiOnly_custom = @("ps-find");
-    @Housekeeping_builtin = @("argue", "blockdlls", "cancel", "checkin", "clear", "downloads", "help", "jobs", "mode dns", "mode dns-txt", "mode dns6", "note", "powershell-import", "ppid", "sleep", "socks stop", "spawnto");
+    @Housekeeping_builtin = @("argue", "blockdlls", "cancel", "checkin", "clear", "downloads", "file_browser", "help", "jobs", "mode dns", "mode dns-txt", "mode dns6", "note", "powershell-import", "ppid", "process_browser", "sleep", "socks stop", "spawnto", "windows_error_code");
     @Housekeeping_custom = @("helpx");
     @ForkRun_builtin = @("chromedump", "covertvpn", "dcsync", "execute-assembly", "hashdump", "logonpasswords", "mimikatz", "net", "portscan", "powerpick", "pth", "ssh", "ssh-key");
     @ForkRun_custom = @("shovel", "sharpgen");
     @ForkRunOrTargetExplictProcess_builtin = @(, "browserpivot", "psinject", "desktop", "keylogger", "printscreen", "screenshot", "screenwatch");
     @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
-    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "driversigs", "domainenum", "enumLocalSessions", "enum_filter_driver", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netshares", "netsharesAdmin", "netstat", "netuse_add", "netuse_delete", "netuse_list", "netuser", "netview", "nslookup", "probe", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "vssenum", "whoami", "windowlist", "wmi_query");
+    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "driversigs", "domainenum", "enumLocalSessions", "enum_filter_driver", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "locale", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netshares", "netsharesAdmin", "netstat", "netuse_add", "netuse_delete", "netuse_list", "netuser", "netview", "notepad", "nslookup", "probe", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_qtriggerinfo", "sc_query", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "vssenum", "whoami", "windowlist", "wmi_query");
     @Bof_bofnet = @("bofnet_init",  "bofnet_shutdown",  "bofnet_list",  "bofnet_listassemblies",  "bofnet_execute", "bofnet_executeassembly", "bofnet_load",  "bofnet_loadbig",  "bofnet_job",  "bofnet_jobs",  "bofnet_jobstatus",  "bofnet_jobkill",  "bofnet_boo");
+    @Bof_Outflank_credpack = @("credpack-dumpertng", "credpack-handledupminidump", "credpack-passwordspy", "credpack-processdupminidump");
     @Bof_custom = @("Askcreds", "Domaininfo", "dumpertng", "GetMachineAccountQuota", "AddMachineAccount", "DelMachineAccount", "shovelng", "Kerberoast", "Lapsdump", "Psw", "Smbinfo", "SprayAD", "StartWebClient", "Winver", "exitthread", "inlineExecute-Assembly", "hollow", "sec-inject", "sec-shinject", "kerberoast", "nanodump", "unhook" );
     @ProcessExecution_builtin = @("execute", "run", "runas", "runu", "runasadmin");
     @ProcessSpawnAndInject_builtin = @("elevate", "shspawn", "spawn", "spawnas", "spawnu", "spunnel", "spunnel_local" );  
@@ -65,7 +66,7 @@ alias helpx {
             {
                 blog($1, "\c3$[25]command" . beacon_command_describe($command) . "\o");     # set command color to GREEN
             }
-            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_CS-Situational-Awareness-BOF || $command in @Bof_bofnet,true,false))
+            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_CS-Situational-Awareness-BOF || $command in @Bof_Outflank_credpack || $command in @Bof_bofnet,true,false))
             {
                 blog($1, "\c9$[25]command" . beacon_command_describe($command) . "\o");     # set command color to LIGHT GREEN
             }
