@@ -22,22 +22,23 @@ alias helpx {
 
     @ApiOnly_builtin = @("!", "cd", "clipboard", "connect", "cp", "download", "drives", "exit", "getprivs", "getuid", "history", "inline-execute", "jobkill", "kill", "link", "ls", "make_token", "mkdir", "mv", "ps", "pwd", "rev2self", "rm", "rportfwd", "rportfwd_local", "setenv", "socks", "steal_token", "unlink", "upload");
     @ApiOnly_custom = @("ps-find");
-    @Housekeeping_builtin = @("argue", "blockdlls", "cancel", "checkin", "clear", "downloads", "file_browser", "help", "jobs", "mode dns", "mode dns6", "mode dns-txt", "note", "powershell-import", "ppid", "process_browser", "sleep", "socks stop", "spawnto", "windows_error_code");
-    @Housekeeping_custom = @("helpx");
+    @Bof_bofnet = @("bofnet_boo", "bofnet_execute", "bofnet_executeassembly", "bofnet_init", "bofnet_job", "bofnet_jobs", "bofnet_jobkill", "bofnet_jobstatus", "bofnet_list", "bofnet_listassemblies", "bofnet_load", "bofnet_loadbig", "bofnet_shutdown");
+    @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
+    @Bof_custom = @("AddMachineAccount", "Askcreds", "DelMachineAccount", "Domaininfo", "dumpertng", "exitthread", "GetMachineAccountQuota", "hollow", "inlineExecute-Assembly", "Kerberoast", "Lapsdump", "nanodump", "Psw", "sec-inject", "sec-shinject", "shovelng", "Smbinfo", "SprayAD", "StartWebClient", "unhook", "Winver");
+    @Bof_CS-Remote-OPs-BOF = @("adcs_request", "addusertogroup", "chromeKey", "enableuser", "lastpass", "office_tokens", "procdump", "ProcessDestroy", "ProcessListHandles", "reg_delete", "reg_save", "reg_set", "sc_config", "sc_create", "sc_delete", "sc_description", "sc_start", "sc_stop", "schtaskscreate", "schtasksdelete", "schtasksstop", "schtasksrun", "setuserpass", "shspawnas", "unexpireuser");    
+    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "domainenum", "driversigs", "enum_filter_driver", "enumLocalSessions", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "locale", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netshares", "netsharesAdmin", "netstat", "netuse_add", "netuse_delete", "netuse_list", "netuser", "netview", "notepad", "nslookup", "probe", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_query", "sc_qtriggerinfo", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "vssenum", "whoami", "windowlist", "wmi_query");    
+    @Bof_Outflank_credpack = @("credpack-dumpertng", "credpack-handledupminidump", "credpack-passwordspy", "credpack-processdupminidump");
+    @DllSpawn_custom = @("HiddenDesktop", "PetitPotam", "psc", "psh", "psk", "psm", "psw", "psx", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD");
     @ForkRun_builtin = @("chromedump", "covertvpn", "dcsync", "execute-assembly", "hashdump", "logonpasswords", "mimikatz", "net", "portscan", "powerpick", "pth", "ssh", "ssh-key");
     @ForkRun_custom = @("sharpgen", "shovel");
     @ForkRunOrTargetExplictProcess_builtin = @("browserpivot", "desktop", "keylogger", "printscreen", "psinject", "screenshot", "screenwatch");
-    @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
-    @Bof_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "domainenum", "driversigs", "enum_filter_driver", "enumLocalSessions", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "locale", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netshares", "netsharesAdmin", "netstat", "netuse_add", "netuse_delete", "netuse_list", "netuser", "netview", "notepad", "nslookup", "probe", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_query", "sc_qtriggerinfo", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "vssenum", "whoami", "windowlist", "wmi_query");
-    @Bof_bofnet = @("bofnet_boo", "bofnet_execute", "bofnet_executeassembly", "bofnet_init", "bofnet_job", "bofnet_jobs", "bofnet_jobkill", "bofnet_jobstatus", "bofnet_list", "bofnet_listassemblies", "bofnet_load", "bofnet_loadbig", "bofnet_shutdown");
-    @Bof_Outflank_credpack = @("credpack-dumpertng", "credpack-handledupminidump", "credpack-passwordspy", "credpack-processdupminidump");
-    @Bof_custom = @("AddMachineAccount", "Askcreds", "DelMachineAccount", "Domaininfo", "dumpertng", "exitthread", "GetMachineAccountQuota", "hollow", "inlineExecute-Assembly", "Kerberoast", "Lapsdump", "nanodump", "Psw", "sec-inject", "sec-shinject", "shovelng", "Smbinfo", "SprayAD", "StartWebClient", "unhook", "Winver");
+    @Housekeeping_builtin = @("argue", "blockdlls", "cancel", "checkin", "clear", "downloads", "file_browser", "help", "jobs", "mode dns", "mode dns6", "mode dns-txt", "note", "powershell-import", "ppid", "process_browser", "sleep", "socks stop", "spawnto", "windows_error_code");
+    @Housekeeping_custom = @("helpx");
     @ProcessExecution_builtin = @("execute", "run", "runas", "runasadmin", "runu");
-    @ProcessSpawnAndInject_builtin = @("elevate", "shspawn", "spawn", "spawnas", "spawnu", "spunnel", "spunnel_local" );  
+    @ProcessOrServiceCreation_builtin = @("jump", "powershell", "pth", "remote-exec", "shell");
     @ProcessRemoteInject_builtin = @("dllinject", "dllload", "inject", "shinject");
     @ProcessRemoteInject_custom = @("dumpert");
-    @ProcessOrServiceCreation_builtin = @("jump", "powershell", "pth", "remote-exec", "shell");
-    @DllSpawn_custom = @("HiddenDesktop", "PetitPotam", "psc", "psh", "psk", "psm", "psw", "psx", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD");
+    @ProcessSpawnAndInject_builtin = @("elevate", "shspawn", "spawn", "spawnas", "spawnu", "spunnel", "spunnel_local" );  
 
     # start printing to current beacon
     blog($1, "Available beacon commands with command type highlighting\n");
