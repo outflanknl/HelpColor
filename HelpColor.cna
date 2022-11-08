@@ -67,7 +67,7 @@ alias helpx {
             {
                 blog($1, "\c3$[25]command" . beacon_command_describe($command) . "\o");     # set command color to GREEN
             }
-            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_trustedsec_CS-Situational-Awareness-BOF || $command in Bof_trustedsec_CS-Remote-OPs-BOF || $command in @Bof_Outflank_credpack || $command in @Bof_bofnet,true,false))
+            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_trustedsec_CS-Situational-Awareness-BOF || $command in @Bof_trustedsec_CS-Remote-OPs-BOF || $command in @Bof_Outflank_credpack || $command in @Bof_bofnet,true,false))
             {
                 blog($1, "\c9$[25]command" . beacon_command_describe($command) . "\o");     # set command color to LIGHT GREEN
             }
