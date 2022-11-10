@@ -24,11 +24,12 @@ alias helpx {
     @ApiOnly_custom = @("ps-find");
     @Bof_bofnet = @("bofnet_boo", "bofnet_execute", "bofnet_executeassembly", "bofnet_init", "bofnet_job", "bofnet_jobs", "bofnet_jobkill", "bofnet_jobstatus", "bofnet_list", "bofnet_listassemblies", "bofnet_load", "bofnet_loadbig", "bofnet_shutdown");
     @Bof_builtin = @("getsystem", "kerberos_ccache_use", "kerberos_ticket_purge", "kerberos_ticket_use", "reg", "timestomp");
-    @Bof_custom = @("AddMachineAccount", "Askcreds", "DelMachineAccount", "Domaininfo", "dumpertng", "exitthread", "GetMachineAccountQuota", "hollow", "inlineExecute-Assembly", "Kerberoast", "Lapsdump", "nanodump", "Psw", "sec-inject", "sec-shinject", "shovelng", "Smbinfo", "SprayAD", "StartWebClient", "unhook", "Winver");
-    @Bof_trustedsec_CS-Remote-OPs-BOF = @("adcs_request", "addusertogroup", "chromeKey", "enableuser", "lastpass", "office_tokens", "procdump", "ProcessDestroy", "ProcessListHandles", "reg_delete", "reg_save", "reg_set", "sc_config", "sc_create", "sc_delete", "sc_description", "sc_start", "sc_stop", "schtaskscreate", "schtasksdelete", "schtasksrun", "schtasksstop", "setuserpass", "shspawnas", "unexpireuser");    
+    @Bof_custom = @("exitthread", "hollow", "inlineExecute-Assembly", "nanodump", "Psw", "sec-inject", "sec-shinject", "shovelng", "unhook");
+    @Bof_trustedsec_CS-Remote-OPs-BOF = @("adcs_request", "addusertogroup", "chromeKey", "clipboardinject", "conhost", "createremotethread", "ctray", "dde", "enableuser", "kernelcallbacktable", "lastpass", "ntcreatethread", "ntqueueapcthread", "office_tokens", "procdump", "ProcessDestroy", "ProcessListHandles", "reg_delete", "reg_save", "reg_set", "sc_config", "sc_create", "sc_delete", "sc_description", "sc_start", "sc_stop", "schtaskscreate", "schtasksdelete", "schtasksrun", "schtasksstop", "setthreadcontext", "setuserpass", "shspawnas", "svcctrl", "tooltip", "unexpireuser", "uxsubclassinfo");    
     @Bof_trustedsec_CS-Situational-Awareness-BOF = @("adcs_enum", "adcs_enum_com", "adcs_enum_com2", "adv_audit_policies", "arp", "cacls", "dir", "domainenum", "driversigs", "enum_filter_driver", "enumLocalSessions", "env", "findLoadedModule", "get_password_policy", "ipconfig", "ldapsearch", "listdns", "listmods", "listpipes", "locale", "netGroupList", "netGroupListMembers", "netLocalGroupList", "netLocalGroupListMembers", "netsession", "netshares", "netsharesAdmin", "netstat", "netuse_add", "netuse_delete", "netuse_list", "netuser", "netview", "notepad", "nslookup", "probe", "reg_query", "reg_query_recursive", "resources", "routeprint", "sc_enum", "sc_qc", "sc_qdescription", "sc_qfailure", "sc_query", "sc_qtriggerinfo", "schtasksenum", "schtasksquery", "tasklist", "uptime", "userenum", "vssenum", "whoami", "windowlist", "wmi_query");    
     @Bof_Outflank_credpack = @("credpack-dumpertng", "credpack-handledupminidump", "credpack-passwordspy", "credpack-processdupminidump");
-    @DllSpawn_custom = @("HiddenDesktop", "PetitPotam", "psc", "psh", "psk", "psm", "psw", "psx", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD");
+    @Bof_Outflank_C2-Tool-Collection = @("AddMachineAccount", "Askcreds", "CVE-2022-26923", "DelMachineAccount", "Domaininfo", "GetMachineAccountQuota", "Kerberoast", "KerbHash", "Lapsdump", "PetitPotam", "psc", "psw", "psx", "psxx", "Smbinfo", "SprayAD", "StartWebClient", "Winver");
+    @DllSpawn_custom = @("HiddenDesktop", "psh", "psk", "psm", "Recon-AD-AllLocalGroups", "Recon-AD-Computers", "Recon-AD-Domain", "Recon-AD-Groups", "Recon-AD-LocalGroups", "Recon-AD-SPNs", "Recon-AD-Users", "Spray-AD");
     @ForkRun_builtin = @("chromedump", "covertvpn", "dcsync", "execute-assembly", "hashdump", "logonpasswords", "mimikatz", "net", "portscan", "powerpick", "pth", "ssh", "ssh-key");
     @ForkRun_custom = @("sharpgen", "shovel");
     @ForkRunOrTargetExplictProcess_builtin = @("browserpivot", "desktop", "keylogger", "printscreen", "psinject", "screenshot", "screenwatch");
@@ -67,7 +68,7 @@ alias helpx {
             {
                 blog($1, "\c3$[25]command" . beacon_command_describe($command) . "\o");     # set command color to GREEN
             }
-            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_trustedsec_CS-Situational-Awareness-BOF || $command in @Bof_trustedsec_CS-Remote-OPs-BOF || $command in @Bof_Outflank_credpack || $command in @Bof_bofnet,true,false))
+            else if(iff($command in @Bof_builtin || $command in @Bof_custom || $command in @Bof_trustedsec_CS-Situational-Awareness-BOF || $command in @Bof_trustedsec_CS-Remote-OPs-BOF || $command in @Bof_Outflank_credpack || $command in @Bof_Outflank_C2-Tool-Collection || $command in @Bof_bofnet,true,false))
             {
                 blog($1, "\c9$[25]command" . beacon_command_describe($command) . "\o");     # set command color to LIGHT GREEN
             }
